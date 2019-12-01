@@ -1,9 +1,21 @@
-language: dart
-os: osx
-addons:
-  homebrew:
-    packages:
-      - flutter
-script:
-  - flutter --version
-  - ls
+jobs:
+  include:
+    - stage: test
+      os: linux
+      language: generic
+      sudo: false
+      addons:
+        apt:
+          sources:
+            - ubuntu-toolchain-r-test
+          packages:
+            # Flutter依赖
+            - libstdc++6
+            - fonts-droid
+      before_script:
+        - git clone https://github.com/flutter/flutter.git -b beta --depth 1
+      script:
+        - "./flutter/bin/flutter upgrade"
+        - "./flutter/bin/flutter test"
+#    - stage: deployAPK
+#    - stage: deployIPA
