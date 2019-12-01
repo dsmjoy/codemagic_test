@@ -1,0 +1,8 @@
+language: dart
+os: osx
+addons:
+  homebrew:
+    packages:
+      - flutter
+script:
+  - flutter --version
