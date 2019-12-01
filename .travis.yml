@@ -1,64 +1,46 @@
 os: linux
 language: android
-jobs:
-  include:
-#  - stage: test
-#    os: linux
-#    language: generic
-#    addons:
-#      apt:
-#        sources:
-#        - ubuntu-toolchain-r-test
-#        packages:
-#        - libstdc++6
-#    before_script:
-#    - git clone https://github.com/flutter/flutter.git -b beta --depth 1
-#    script:
-#    - "./flutter/bin/flutter upgrade"
-#    - "./flutter/bin/flutter test"
-  - stage: apk
-    os: linux
-    language: android
-    env:
-      global:
-      - ANDROID_API=26
-      - EMULATOR_API=21
-      - ANDROID_BUILD_TOOLS=26.0.2
-      - ADB_INSTALL_TIMEOUT=5
-      - secure: AKEaJM+7fk/AyTCjuB2jhrEO2rowGwL860L7Qg26rUmrehhoskxaWj+KlJs8PVQ232Tn7mp7Uja4upzxayjUGwbh2lvkYfiEfBD1gjI+GBxHtV3iVu9i5drU4WTy/9xId1zVa5IdLwKe/geHkmrNtkf/KFV6ZMysvAFT5Na4AAceejiK6R/lEFqDQFP6Wo6gfRjb8PftAyHz0VSxkGc8RRNhhqAEMk2R0edI9rc2mbEJ0RFLZkfQwENmhsn0uW2SXeKQiGH8G8hM3AaL4JaXjkdE3H6U1I3Wkh4FlF+sNj7c8bhFHy/swl3nXTthnecwxkBfEH0CHQS5MYiNK0OcjeEGj1cShjDob1VJEjiISQCnjqIZHCFcC/xcjVJGFBSFJN3RmfmfF1w+f0VXjTG0lSdspNbLnwXl0h1NACRAoNPstanFp8riQtjsT175Kf+/s2JwwMZ38XqD3I4FSu0cQMk/2zvEL9SYJK6eNduW+3qg4cOhNLI3cVO5KSHuDylsZokmkZT6yrM0+mLWK+BW7oOPhkY+5hLDJvmVHa3UcCesyqEMvdgXWX8frwk7B3Na7nd5e37l6716Lg3Z2bbmdJ2F+VlgkHD/t8ZpjDxPeyE0WB82SojrRtZBDfhDY+0uwSMZgdAWsA7Zf40hgSNfTQ8NKZfKQTwn1vrg3C7sdcU=
-      - secure: n5K9DT8HoRGzEJ63M2q47D8fT0br1hAj5sQNCiFX/vRIXFDY7YFt1nKT/liJOCYMA8Cf+MXj4UhEWRQfWtn0GNu6J7XiHscCmVyecadiaUwkloVMz0wwHsufRiWz8jDAGTYEv5wV2Zosx28cHQHlwj/7Ojd099PcqFEf1QcC1SikjVMtyO+CsW1QDB5kHzu6O6MKyJSQcTI/HqFPateXOczEvQn+2zh6UnhrBx+Wrsxx1TSiYuB258FMl7tNjR+weoqE/ihMYy846Py4agi1G0dZzYII3WOyqNLIkOgFfJGVz3QLcvNJ6TG1xn9krR/lmh78DxdsH2v2Hu/wKdzSakdC8Tw1IGEd1PsKfS82JRJL7Kgiv1Fjawf0ach58f/X019tpt1nIrrqtU9tXukSzFyzVMY0GiywMAkLmQQ5HtPPWy6NxoAW7Hdrb7biSV+m9oO+48T+T2q/Z2du79JFEeXAUeo8tUsSaGIucclaSQd/2cF31O/PunsSSP4BDEBNx009qMwBpTBvt9UxQl7FrldX8BSA2PrbO7jYC80lGCgjeQGqJkWbcGW3BvYXgzrxhQiJ3n51wx5oCZtuSW5g8xPnuyl8LGGkttwZB+Pq7gSW8A3dTwqEkIfMLJ7w+DIbqykbgjh87UBVc2TPOpqczeGiho5zJuNCgv68guIo8Fo=
-    android:
-      components:
-      - tools
-      - platform-tools
-      - build-tools-27.0.3
-      - android-27
-      - sys-img-armeabi-v7a-google_apis-25
-      - extra-android-m2repository
-      - extra-google-m2repository
-      - extra-google-android-support
-      licenses:
-      - android-sdk-preview-license-.+
-      - android-sdk-license-.+
-      - google-gdk-license-.+
-    jdk: oraclejdk8
-
-    addons:
-      apt:
-        sources:
-        - ubuntu-toolchain-r-test
-        packages:
-        - libstdc++6
-    before_install:
-    - openssl aes-256-cbc -K $encrypted_ab3ff25e4ef5_key -iv $encrypted_ab3ff25e4ef5_iv -in android/key.properties.enc -out android/key.properties -d
-    - openssl aes-256-cbc -K $encrypted_ab3ff25e4ef5_key -iv $encrypted_ab3ff25e4ef5_iv -in android/key.jks.enc -out android/key.jks -d
-    script:
-    - "./flutter/bin/flutter upgrade"
-    - "./flutter/bin/flutter -v build apk --release"
-    deploy:
-      provider: releases
-      api_key:
-        secure: V+8C9jw33v5nS9OqpXUcjBvUAc6RoMGOqRg01vMhkAs4mlDcf36DpIIhMmGoaaZRDVxlOE8+r5yElLn0nyWg691Tpuz/3Xzh0lX5Ajo5PoWxGpqCb8ntMMZ/JZ4XZJPgkljqsNmQna/XBi4uNv+JH0l2CIaOXUD/2ZnbOEJyFbgbW5Wb0oE0wYZC0RH2oghPiQJ+YGpyDxQQoA7HknCSxtnpdszwJLr6EiYIDiuCCcfhg23O5PSa+JTc992CmKytP+J7CEPw51mIVjTR01RHxsMnRgWQ7Rsgum+o4DNtJD8gcKQBigv2ICcETUvrTXDBD7q6WxGwFozpMaPon01aiqpMQvW2YzWbHzrb7ibaCo80CKUYA3hQsAG7AdECiKJZdAUbFke/R0oX80e2ARMjozpPI18eGPne3gkyWfQ3xEGktnU3CY23cm8rXavhWF/0jRRWfYFVaEL3xUOUdMlaOvBIQgoTtL69GxZhTKZYOqR9ENL9GS5Juhri56LdGZiP/PZX3ndcMvGxggpfT2Gp4d86DQFJuUn6oO7gf59WuY7lAiBt8LH59U6CEI97TaMmc08ggR8pfTUjA/tjuPJ0W6WDLlWjfFWyLOlDkuodel+dHmgdbKrycGIIoCbUOfsikM1OLM9rynWx2HNG8dOMsc3rvL/ID/7C9VBMmpAxPcE=
-      file: "build/app/outputs/apk/release/app-release.apk"
-      on:
-        repo: dsmjoy/codemagic_test
+env:
+  global:
+    - ANDROID_API=26
+    - EMULATOR_API=21
+    - ANDROID_BUILD_TOOLS=26.0.2
+    - ADB_INSTALL_TIMEOUT=5
+    - secure: AKEaJM+7fk/AyTCjuB2jhrEO2rowGwL860L7Qg26rUmrehhoskxaWj+KlJs8PVQ232Tn7mp7Uja4upzxayjUGwbh2lvkYfiEfBD1gjI+GBxHtV3iVu9i5drU4WTy/9xId1zVa5IdLwKe/geHkmrNtkf/KFV6ZMysvAFT5Na4AAceejiK6R/lEFqDQFP6Wo6gfRjb8PftAyHz0VSxkGc8RRNhhqAEMk2R0edI9rc2mbEJ0RFLZkfQwENmhsn0uW2SXeKQiGH8G8hM3AaL4JaXjkdE3H6U1I3Wkh4FlF+sNj7c8bhFHy/swl3nXTthnecwxkBfEH0CHQS5MYiNK0OcjeEGj1cShjDob1VJEjiISQCnjqIZHCFcC/xcjVJGFBSFJN3RmfmfF1w+f0VXjTG0lSdspNbLnwXl0h1NACRAoNPstanFp8riQtjsT175Kf+/s2JwwMZ38XqD3I4FSu0cQMk/2zvEL9SYJK6eNduW+3qg4cOhNLI3cVO5KSHuDylsZokmkZT6yrM0+mLWK+BW7oOPhkY+5hLDJvmVHa3UcCesyqEMvdgXWX8frwk7B3Na7nd5e37l6716Lg3Z2bbmdJ2F+VlgkHD/t8ZpjDxPeyE0WB82SojrRtZBDfhDY+0uwSMZgdAWsA7Zf40hgSNfTQ8NKZfKQTwn1vrg3C7sdcU=
+    - secure: n5K9DT8HoRGzEJ63M2q47D8fT0br1hAj5sQNCiFX/vRIXFDY7YFt1nKT/liJOCYMA8Cf+MXj4UhEWRQfWtn0GNu6J7XiHscCmVyecadiaUwkloVMz0wwHsufRiWz8jDAGTYEv5wV2Zosx28cHQHlwj/7Ojd099PcqFEf1QcC1SikjVMtyO+CsW1QDB5kHzu6O6MKyJSQcTI/HqFPateXOczEvQn+2zh6UnhrBx+Wrsxx1TSiYuB258FMl7tNjR+weoqE/ihMYy846Py4agi1G0dZzYII3WOyqNLIkOgFfJGVz3QLcvNJ6TG1xn9krR/lmh78DxdsH2v2Hu/wKdzSakdC8Tw1IGEd1PsKfS82JRJL7Kgiv1Fjawf0ach58f/X019tpt1nIrrqtU9tXukSzFyzVMY0GiywMAkLmQQ5HtPPWy6NxoAW7Hdrb7biSV+m9oO+48T+T2q/Z2du79JFEeXAUeo8tUsSaGIucclaSQd/2cF31O/PunsSSP4BDEBNx009qMwBpTBvt9UxQl7FrldX8BSA2PrbO7jYC80lGCgjeQGqJkWbcGW3BvYXgzrxhQiJ3n51wx5oCZtuSW5g8xPnuyl8LGGkttwZB+Pq7gSW8A3dTwqEkIfMLJ7w+DIbqykbgjh87UBVc2TPOpqczeGiho5zJuNCgv68guIo8Fo=
+android:
+  components:
+    - tools
+    - platform-tools
+    - build-tools-27.0.3
+    - android-27
+    - sys-img-armeabi-v7a-google_apis-25
+    - extra-android-m2repository
+    - extra-google-m2repository
+    - extra-google-android-support
+  licenses:
+    - android-sdk-preview-license-.+
+    - android-sdk-license-.+
+    - google-gdk-license-.+
+jdk: oraclejdk8
+addons:
+  apt:
+    sources:
+      - ubuntu-toolchain-r-test
+    packages:
+      - libstdc++6
+before_install:
+  - openssl aes-256-cbc -K $encrypted_ab3ff25e4ef5_key -iv $encrypted_ab3ff25e4ef5_iv
+    -in android/key.properties.enc -out key.properties -d
+  - openssl aes-256-cbc -K $encrypted_ab3ff25e4ef5_key -iv $encrypted_ab3ff25e4ef5_iv
+    -in android/key.jks.enc -out android/key.jks -d
+script:
+  - "./flutter/bin/flutter upgrade"
+  - "./flutter/bin/flutter -v build apk --release"
+deploy:
+  provider: releases
+  api_key:
+    secure: V+8C9jw33v5nS9OqpXUcjBvUAc6RoMGOqRg01vMhkAs4mlDcf36DpIIhMmGoaaZRDVxlOE8+r5yElLn0nyWg691Tpuz/3Xzh0lX5Ajo5PoWxGpqCb8ntMMZ/JZ4XZJPgkljqsNmQna/XBi4uNv+JH0l2CIaOXUD/2ZnbOEJyFbgbW5Wb0oE0wYZC0RH2oghPiQJ+YGpyDxQQoA7HknCSxtnpdszwJLr6EiYIDiuCCcfhg23O5PSa+JTc992CmKytP+J7CEPw51mIVjTR01RHxsMnRgWQ7Rsgum+o4DNtJD8gcKQBigv2ICcETUvrTXDBD7q6WxGwFozpMaPon01aiqpMQvW2YzWbHzrb7ibaCo80CKUYA3hQsAG7AdECiKJZdAUbFke/R0oX80e2ARMjozpPI18eGPne3gkyWfQ3xEGktnU3CY23cm8rXavhWF/0jRRWfYFVaEL3xUOUdMlaOvBIQgoTtL69GxZhTKZYOqR9ENL9GS5Juhri56LdGZiP/PZX3ndcMvGxggpfT2Gp4d86DQFJuUn6oO7gf59WuY7lAiBt8LH59U6CEI97TaMmc08ggR8pfTUjA/tjuPJ0W6WDLlWjfFWyLOlDkuodel+dHmgdbKrycGIIoCbUOfsikM1OLM9rynWx2HNG8dOMsc3rvL/ID/7C9VBMmpAxPcE=
+  file: build/app/outputs/apk/release/app-release.apk
+  on:
+    repo: dsmjoy/codemagic_test
