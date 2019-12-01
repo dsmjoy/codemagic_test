@@ -6,3 +6,4 @@ addons:
       - flutter
 script:
   - flutter --version
+  - ls
