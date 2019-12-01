@@ -11,7 +11,7 @@ jobs:
           packages:
             # Flutter依赖
             - libstdc++6
-            - fonts-droid
+#            - fonts-droid
       before_script:
         - git clone https://github.com/flutter/flutter.git -b beta --depth 1
       script:
