@@ -30,14 +30,11 @@ addons:
     packages:
     - libstdc++6
 before_install:
-  - openssl aes-256-cbc -K $encrypted_96f893f84eae_key -iv $encrypted_96f893f84eae_iv -in android/secrets.tar.enc -out android/secrets.tar -d
-  - tar xvf android/secrets.tar -C android/
-  - yes | sdkmanager --update
-  - yes | sdkmanager --licenses >/dev/null
-#  - yes | sdkmanager "platforms;android-28"
-#  - mkdir -p "$ANDROID_HOME/licenses"
-#  - echo -e "\nd56f5187479451eabf01fb78af6dfcb131a6481e\n24333f8a63b6825ea9c5514f83c2829b004d1fee" > "$ANDROID_HOME/licenses/android-sdk-license"
-#  - chmod +x android/gradlew
+- openssl aes-256-cbc -K $encrypted_96f893f84eae_key -iv $encrypted_96f893f84eae_iv
+  -in secrets.tar.enc -out android/secrets.tar -d
+- tar xvf android/secrets.tar -C android/
+- yes | sdkmanager --update
+- yes | sdkmanager --licenses >/dev/null
 before_script:
 - git clone https://github.com/flutter/flutter.git -b beta --depth 1
 script:
