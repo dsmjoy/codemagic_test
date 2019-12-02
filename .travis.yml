@@ -31,8 +31,6 @@ addons:
     - libstdc++6
 before_install:
 - openssl aes-256-cbc -K $encrypted_96f893f84eae_key -iv $encrypted_96f893f84eae_iv
-  -in key.properties.enc -out android/key.properties -d
-- openssl aes-256-cbc -K $encrypted_96f893f84eae_key -iv $encrypted_96f893f84eae_iv
   -in key.jks.enc -out android/key.jks -d
 script:
 - "./flutter/bin/flutter upgrade"
