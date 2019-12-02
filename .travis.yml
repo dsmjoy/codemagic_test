@@ -31,7 +31,7 @@ addons:
     - libstdc++6
 before_install:
   - openssl aes-256-cbc -K $encrypted_ab3ff25e4ef5_key -iv $encrypted_ab3ff25e4ef5_iv -in android/secrets.tar.enc -out android/secrets.tar -d
-  - tar xvf android/secrets.tar
+  - tar xvf android/secrets.tar -C android/
 before_script:
 - git clone https://github.com/flutter/flutter.git -b beta --depth 1
 script:
