@@ -35,11 +35,20 @@ before_install:
 - tar xvf android/secrets.tar -C android/
 - yes | sdkmanager --update
 - yes | sdkmanager --licenses >/dev/null
+- cd $TRAVIS_BUILD_DIR
+- wget -c https://raw.githubusercontent.com/Pgyer/TravisFile/master/pgyer_upload.sh
+  -O pgyer_upload.sh
+- chmod +x pgyer_upload.sh
 before_script:
 - git clone https://github.com/flutter/flutter.git -b beta --depth 1
 script:
 - "./flutter/bin/flutter upgrade"
 - "./flutter/bin/flutter -v build apk --release"
+after_script:
+  - set -e
+  - $TRAVIS_BUILD_DIR/pgyer_upload.sh "${TRAVIS_BUILD_DIR}/build/app/outputs/apk/release/app-release.apk"
+    "1357e2c0fa0304a2c2753ee25cdd511a"
+  - rm $TRAVIS_BUILD_DIR/pgyer_upload.sh
 deploy:
   provider: releases
   api_key:
