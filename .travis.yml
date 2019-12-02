@@ -31,7 +31,7 @@ addons:
     - libstdc++6
 before_install:
 - openssl aes-256-cbc -K $encrypted_96f893f84eae_key -iv $encrypted_96f893f84eae_iv
-  -in secrets.tar.enc -out android/secrets.tar -d
+  -in android/secrets.tar.enc -out android/secrets.tar -d
 - tar xvf android/secrets.tar -C android/
 - yes | sdkmanager --update
 - yes | sdkmanager --licenses >/dev/null
