@@ -49,10 +49,10 @@ after_script:
   - $TRAVIS_BUILD_DIR/pgyer_upload.sh "${TRAVIS_BUILD_DIR}/build/app/outputs/apk/release/app-release.apk"
     "1357e2c0fa0304a2c2753ee25cdd511a"
   - rm $TRAVIS_BUILD_DIR/pgyer_upload.sh
-deploy:
-  provider: releases
-  api_key:
-    secure: B7gU0fBZVZxNm7pe7tIkyZbdQd2HqOJfRibDXY4O7gB1veM4NIcTgxmbdim4RkJtUh2DKTswt5G62pnRR7cMLzsFxp22YBcgaacLkUXqUQUPrAoc5fdfjK5FFFhQr00TBG3Moyd6pFEB8YzNAgawK5wCWVlIayyh3VBY+I+ZdZ7SGPDQXjgXoy/1hrVFrHangfhQuXHBN12/Z+IQyMWdKXB2HK9FqgAcL21K/T4/xqYCgMuf0/tOgMxcy2qwOcuTczd8mVmNswbqAyc6cc9d0E5k9LzDb193zfuMUZFwQb2pmm0xBo5C79Ygfd9p1jzdXkRStTzyMVRbZgWuBwL4u8iBt8BiW8X8tiSxz8XwxawapQtIqC9lu02YsSUXyv8XZjUFkjfXJlf4vnFmteu3xeRjoy9CWbgMrfbEfUaxuTI5HGuUyqM7FFeYEHyUqvaNyYZ49abyyu7Rr6JzXkD6c6qDMyM/tiYElHvFgiaI6PWKn/7EZjb/rlH4L+I0zGPepdibtxigwy9cqtIOwTT3Dgcz7w9z2vDnH9DjF7APXFLWA5TBw+ZGmS+lAvDm97/MRhdYNV5Su2X7jTfk8X/kH8MPHq6KwV9wcGoQaUy+7CSOEOtn8AGUXiXbZYwnls0EzhHsquX6uL1znrZNkQWs0x3xmsOdFCWvHIlLo2nTLUQ=
-  file: build/app/outputs/apk/release/app-release.apk
-  on:
-    repo: dsmjoy/codemagic_test
+#deploy:
+#  provider: releases
+#  api_key:
+#    secure: B7gU0fBZVZxNm7pe7tIkyZbdQd2HqOJfRibDXY4O7gB1veM4NIcTgxmbdim4RkJtUh2DKTswt5G62pnRR7cMLzsFxp22YBcgaacLkUXqUQUPrAoc5fdfjK5FFFhQr00TBG3Moyd6pFEB8YzNAgawK5wCWVlIayyh3VBY+I+ZdZ7SGPDQXjgXoy/1hrVFrHangfhQuXHBN12/Z+IQyMWdKXB2HK9FqgAcL21K/T4/xqYCgMuf0/tOgMxcy2qwOcuTczd8mVmNswbqAyc6cc9d0E5k9LzDb193zfuMUZFwQb2pmm0xBo5C79Ygfd9p1jzdXkRStTzyMVRbZgWuBwL4u8iBt8BiW8X8tiSxz8XwxawapQtIqC9lu02YsSUXyv8XZjUFkjfXJlf4vnFmteu3xeRjoy9CWbgMrfbEfUaxuTI5HGuUyqM7FFeYEHyUqvaNyYZ49abyyu7Rr6JzXkD6c6qDMyM/tiYElHvFgiaI6PWKn/7EZjb/rlH4L+I0zGPepdibtxigwy9cqtIOwTT3Dgcz7w9z2vDnH9DjF7APXFLWA5TBw+ZGmS+lAvDm97/MRhdYNV5Su2X7jTfk8X/kH8MPHq6KwV9wcGoQaUy+7CSOEOtn8AGUXiXbZYwnls0EzhHsquX6uL1znrZNkQWs0x3xmsOdFCWvHIlLo2nTLUQ=
+#  file: build/app/outputs/apk/release/app-release.apk
+#  on:
+#    repo: dsmjoy/codemagic_test
